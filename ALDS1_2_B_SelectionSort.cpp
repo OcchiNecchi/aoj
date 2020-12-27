@@ -1,4 +1,4 @@
-// 洗濯ソート
+// 選択ソート
 #include <iostream>
 using namespace std;
 static const int MAX = 200000;
