@@ -20,6 +20,7 @@ int inputArray[MAX];
 
 // 入力数列をソートしたものを入れる
 int sortedArray[MAX];
+// ソート後に配列の何番目に並んでいればいいかを格納する
 int T[VMAX + 1];
 
 int solve() {
@@ -32,7 +33,7 @@ int solve() {
     sortedBool[i] = false;
   }
 
-  // arrayを並べ替え、
+  // arrayを並べ替え、sortedArrayやsortedBoolのどこにあるのか場所を記録するT配列を作成する
   sort(sortedArray, sortedArray+n);
   for(int i = 0; i < n; i++) {
     T[sortedArray[i]] = i;
@@ -43,6 +44,8 @@ int solve() {
     if(sortedBool[i]) continue;
 
     int current = i;
+    
+    // サークル内の要素の合計を保持する
     int sigmaW = 0;
 
     // サークル内での最小値を保持する
@@ -53,11 +56,16 @@ int solve() {
     while(1) {
       sortedBool[current] = true;
       partArray++;
-      int v = inputArray[current];
-      curcleMinimum = min(curcleMinimum, v);
 
-      sigmaW += v;
-      current = T[v];
+      // currentに現状入っている要素をsingleUnitに入れる
+      int singleUnit = inputArray[current];
+      curcleMinimum = min(curcleMinimum, singleUnit);
+
+      sigmaW += singleUnit;
+
+      // currentにはT配列を用いて、singleUnitに入った値は本来はどこの場所かを調べ
+      // currentに入れる
+      current = T[singleUnit];
       if (sortedBool[current]) break;
     }
 
