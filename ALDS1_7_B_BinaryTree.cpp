@@ -41,6 +41,7 @@ int setHeight(int nowNode) {
   heightArray[nowNode] = (height1 > height2 ? height1 : height2);
   return heightArray[nowNode];
 }
+
 int getSibling(int nowNode) {
   // 親ノードが無い場合
   if (nodeArray[nowNode].parentNode == NIL) return NIL;
