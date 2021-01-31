@@ -93,6 +93,7 @@ int main() {
     nodeArray[i].parentNode = NIL;
   }
 
+  // input情報をnodeArrayに入れていく
   int nodeId, leftChild, rightChild;
   for (int i = 0; i < n; i++) {
     cin >> nodeId >> leftChild >> rightChild;
