@@ -1,4 +1,4 @@
-// 二分探索木　挿入
+// 二分探索木 探索
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -70,6 +70,18 @@ void preorder(Node *nowNode) {
   preorder(nowNode->rightNode);
 }
 
+Node * find(Node *nowNode, int inputNum) {
+  // 現在探索のNodeがNILでない、かつ、現在探索のNodeが探索ターゲットではないならループ
+  while(nowNode != NIL && inputNum != nowNode->key) {
+    if(inputNum < nowNode->key) {
+      nowNode = nowNode->leftNode;
+    } else {
+      nowNode = nowNode->rightNode;
+    }
+  }
+  return nowNode;
+}
+
 int main() {
   int n;
   cin >> n;
@@ -81,7 +93,12 @@ int main() {
     if (command == "insert") {
       cin >> inputNum;
       insert(inputNum);
-    } else {
+    } else if(command == "find") {
+      cin >> inputNum;
+      Node *tmpNode = find(root, inputNum);
+      if(tmpNode != NIL) cout << "yes" << endl;
+      else cout << "no" << endl;
+    }else {
       inorder(root);
       cout << endl;
       preorder(root);
