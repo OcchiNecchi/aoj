@@ -17,6 +17,7 @@ int leftChild(int key) { return key * 2; }
 // 右の子を計算する
 int rightChild(int key) { return key * 2 + 1; }
 
+// keyからの部分期のrootが子より小さい場合、移動させる
 void maxHeapify(int key) {
   int leftKey = leftChild(key);
   int rightKey = rightChild(key);
