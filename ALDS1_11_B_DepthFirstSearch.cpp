@@ -1,6 +1,5 @@
 // 深さ優先探索
-// スタックで実装すると、スタック部分をキューにしてあげると幅優先になるくらい
-// 同じらしいのでスタックで実装する
+// スタックで実装する
 #include <iostream>
 #include <stack>
 using namespace std;
