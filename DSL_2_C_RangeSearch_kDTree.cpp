@@ -38,13 +38,8 @@ int nodePoint;
 
 // lessXやlessYはプレディケート、sort関数使用時、Pointクラスを整列するため
 // 何を基準にsortさせるかを第３引数に設定する
-bool lessX(const Point &p1, const Point &p2) {
-  return p1.x < p2.y;
-}
-
-bool lessY(const Point &p1, const Point &p2) {
-  return p1.y < p2.y;
-}
+static bool lessX(const Point &p1, const Point &p2) { return p1.x < p2.x; }
+static bool lessY(const Point &p1, const Point &p2) { return p1.y < p2.y; }
 
 int makeKDTree(int leftNode, int rightNode, int depth) {
   if(leftNode >= rightNode) return NIL;
